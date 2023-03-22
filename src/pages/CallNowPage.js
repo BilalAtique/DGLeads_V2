@@ -24,7 +24,7 @@ export default function CalNowPage() {
                     <Grid item xs={12} md={6} lg={8}>
                         <Card>
                             <form>
-                                <h2>Phonenumber</h2>
+                                <h2>Phone</h2>
                                 <Input type="text" />
                                 <h2>Website Url</h2>
                                 <input type="text" />
