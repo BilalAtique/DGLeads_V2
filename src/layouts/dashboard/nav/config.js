@@ -12,19 +12,14 @@ const navConfig = [
     icon: icon('ic_analytics'),
   },
   {
-    title: 'user',
-    path: '/user',
+    title: 'contacts',
+    path: '/contacts',
     icon: icon('ic_user'),
   },
   {
-    title: 'product',
-    path: '/products',
-    icon: icon('ic_cart'),
-  },
-  {
-    title: 'blog',
-    path: '/blog',
-    icon: icon('ic_blog'),
+    title: 'Calendar',
+    path: '/calendar',
+    icon: icon('ic_disabled'),
   },
   {
     title: 'login',
@@ -36,11 +31,7 @@ const navConfig = [
     path: '/404',
     icon: icon('ic_disabled'),
   },
-  {
-    title: 'Calendar',
-    path: '/calendar',
-    icon: icon('ic_disabled'),
-  },
+
 ];
 
 export default navConfig;
