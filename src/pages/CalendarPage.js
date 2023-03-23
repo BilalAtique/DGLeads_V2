@@ -4,6 +4,9 @@ import {
     ProcessedEvent,
     ViewEvent
 } from "@aldabil/react-scheduler";
+import { Typography, Card } from '@mui/material';
+import { Container } from "@mui/system";
+
 import { EVENTS } from "../components/calendar/events";
 
 export default function Calendar() {
@@ -64,10 +67,20 @@ export default function Calendar() {
     };
 
     return (
-        <Scheduler
-            getRemoteEvents={fetchRemote}
-            onConfirm={handleConfirm}
-            onDelete={handleDelete}
-        />
+        <>
+            <Container>
+                <Typography variant="h4" sx={{ mb: 5 }}>
+                    Hi, Welcome back
+                </Typography>
+
+                <Card mb={5} >
+                    <Scheduler
+                        getRemoteEvents={fetchRemote}
+                        onConfirm={handleConfirm}
+                        onDelete={handleDelete}
+                    />
+                </Card>
+            </Container>
+        </>
     );
 }

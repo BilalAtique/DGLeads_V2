@@ -20,7 +20,7 @@ export default function Router() {
       children: [
         { element: <Navigate to="/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
-        { path: 'user', element: <UserPage /> },
+        { path: 'contacts', element: <UserPage /> },
         { path: 'calendar', element: <Calendar /> },
         { path: 'call', element: <CalNowPage /> },
 
