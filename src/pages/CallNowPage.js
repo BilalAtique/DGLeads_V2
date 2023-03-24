@@ -16,21 +16,19 @@ export default function CalNowPage() {
                 <title> Call Now | DigiLeads </title>
             </Helmet>
 
-            <Container maxWidth="xl">
+            <Container>
                 <Typography variant="h4" sx={{ mb: 5 }}>
                     Call Now
                 </Typography>
-                <Container>
-                    <Grid item xs={12} md={6} lg={8}>
-                        <Card>
-                            <form>
-                                <h2>Phone</h2>
-                                <Input type="text" />
-                                <h2>Website Url</h2>
-                                <input type="text" />
-                            </form>
-                        </Card>
-                    </Grid>
+                <Container sx={{ width: '50%' }}>
+                    <Card>
+                        <form>
+                            <Typography variant='h4'>Phone</Typography>
+                            <Input type="text" />
+                            <Typography variant='h4'>Website Url</Typography>
+                            <Input type="text" />
+                        </form>
+                    </Card>
                 </Container>
             </Container>
         </>
