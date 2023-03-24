@@ -1241,6 +1241,11 @@
   dependencies:
     "@date-io/core" "^2.16.0"
 
+"@eisberg-labs/mui-copy-field@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.npmjs.org/@eisberg-labs/mui-copy-field/-/mui-copy-field-4.0.2.tgz"
+  integrity sha512-fJqsSJcUNlRJiR5sDWa0c312rlmUG3+AYcBp7XyYHg9535Ah50O2iGat8w1ai8s1Z5eG7lFG72z4VZVf6UiHfA==
+
 "@emotion/babel-plugin@^11.10.6":
   version "11.10.6"
   resolved "https://registry.npmjs.org/@emotion/babel-plugin/-/babel-plugin-11.10.6.tgz"
@@ -1286,7 +1291,7 @@
   resolved "https://registry.npmjs.org/@emotion/memoize/-/memoize-0.8.0.tgz"
   integrity sha512-G/YwXTkv7Den9mXDO7AhLWkE3q+I92B+VqAE+dYG4NGPaHZGvt3G8Q0p9vmE+sq7rTGphUbAvmQ9YpbfMQGGlA==
 
-"@emotion/react@^11.0.0-rc.0", "@emotion/react@^11.10.6", "@emotion/react@^11.4.1", "@emotion/react@^11.5.0", "@emotion/react@^11.9.0":
+"@emotion/react@^11.0.0-rc.0", "@emotion/react@^11.10.0", "@emotion/react@^11.10.6", "@emotion/react@^11.4.1", "@emotion/react@^11.5.0", "@emotion/react@^11.9.0":
   version "11.10.6"
   resolved "https://registry.npmjs.org/@emotion/react/-/react-11.10.6.tgz"
   integrity sha512-6HT8jBmcSkfzO7mc+N1L9uwvOnlcGoix8Zn7srt+9ga0MjREo6lRpuVX0kzo6Jp6oTqDhREOFsygN6Ew4fEQbw==
@@ -1316,7 +1321,7 @@
   resolved "https://registry.npmjs.org/@emotion/sheet/-/sheet-1.2.1.tgz"
   integrity sha512-zxRBwl93sHMsOj4zs+OslQKg/uhF38MB+OMKoCrVuS0nyTkqnau+BM3WGEoOptg9Oz45T/aIGs1qbVAsEFo3nA==
 
-"@emotion/styled@^11.10.6", "@emotion/styled@^11.3.0", "@emotion/styled@^11.8.1":
+"@emotion/styled@^11.10.0", "@emotion/styled@^11.10.6", "@emotion/styled@^11.3.0", "@emotion/styled@^11.8.1":
   version "11.10.6"
   resolved "https://registry.npmjs.org/@emotion/styled/-/styled-11.10.6.tgz"
   integrity sha512-OXtBzOmDSJo5Q0AFemHCfl+bUueT8BIcPSxu0EGTpGk6DmI5dnhSzQANm1e1ze0YZL7TDyAyy6s/b/zmGOS3Og==
@@ -1720,7 +1725,7 @@
   resolved "https://registry.npmjs.org/@mui/core-downloads-tracker/-/core-downloads-tracker-5.11.9.tgz"
   integrity sha512-YGEtucQ/Nl91VZkzYaLad47Cdui51n/hW+OQm4210g4N3/nZzBxmGeKfubEalf+ShKH4aYDS86XTO6q/TpZnjQ==
 
-"@mui/icons-material@>=5.0.0":
+"@mui/icons-material@^5.10.0", "@mui/icons-material@>=5.0.0":
   version "5.11.11"
   resolved "https://registry.npmjs.org/@mui/icons-material/-/icons-material-5.11.11.tgz"
   integrity sha512-Eell3ADmQVE8HOpt/LZ3zIma8JSvPh3XgnhwZLT0k5HRqZcd6F/QDHc7xsWtgz09t+UEFvOYJXjtrwKmLdwwpw==
@@ -1741,7 +1746,7 @@
     prop-types "^15.8.1"
     react-is "^18.2.0"
 
-"@mui/material@^5.0.0", "@mui/material@^5.11.10", "@mui/material@^5.4.1", "@mui/material@>=5.0.0":
+"@mui/material@^5.0.0", "@mui/material@^5.10.0", "@mui/material@^5.11.10", "@mui/material@^5.4.1", "@mui/material@>=5.0.0":
   version "5.11.10"
   resolved "https://registry.npmjs.org/@mui/material/-/material-5.11.10.tgz"
   integrity sha512-hs1WErbiedqlJIZsljgoil908x4NMp8Lfk8di+5c7o809roqKcFTg2+k3z5ucKvs29AXcsdXrDB/kn2K6dGYIw==

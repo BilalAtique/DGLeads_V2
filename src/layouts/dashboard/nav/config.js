@@ -34,7 +34,7 @@ const navConfig = [
   {
     title: 'Call Now',
     path: '/call',
-    icon: icon('ic_disabled'),
+    icon: icon('ic_callnow'),
   },
 
 ];
