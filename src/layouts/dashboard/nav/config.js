@@ -19,7 +19,7 @@ const navConfig = [
   {
     title: 'Calendar',
     path: '/calendar',
-    icon: icon('ic_disabled'),
+    icon: icon('ic_calendar '),
   },
   {
     title: 'login',

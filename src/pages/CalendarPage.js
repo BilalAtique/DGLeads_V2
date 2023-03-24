@@ -70,7 +70,7 @@ export default function Calendar() {
         <>
             <Container>
                 <Typography variant="h4" sx={{ mb: 5 }}>
-                    Hi, Welcome back
+                    Calendar
                 </Typography>
 
                 <Card mb={5} >

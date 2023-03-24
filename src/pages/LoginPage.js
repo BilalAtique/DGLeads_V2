@@ -1,3 +1,7 @@
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
+
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { styled } from '@mui/material/styles';
@@ -9,6 +13,7 @@ import Logo from '../components/logo';
 import Iconify from '../components/iconify';
 // sections
 import { LoginForm } from '../sections/auth/login';
+
 
 // ----------------------------------------------------------------------
 
@@ -38,10 +43,19 @@ const StyledContent = styled('div')(({ theme }) => ({
   padding: theme.spacing(12, 0),
 }));
 
+
+
 // ----------------------------------------------------------------------
 
 export default function LoginPage() {
   const mdUp = useResponsive('up', 'md');
+  const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  if (userIsLoggedIn) {
+    navigate('/app');
+    return null;
+  }
 
   return (
     <>
