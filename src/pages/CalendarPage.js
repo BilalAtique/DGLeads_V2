@@ -2,85 +2,114 @@ import {
     Scheduler,
     EventActions,
     ProcessedEvent,
-    ViewEvent
+    ViewEvent,
 } from "@aldabil/react-scheduler";
-import { Typography, Card } from '@mui/material';
-import { Container } from "@mui/system";
-
-import { EVENTS } from "../components/calendar/events";
+import { useState } from 'react';
+import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
 
 export default function Calendar() {
+    const session = useSession();
+    const supabase = useSupabaseClient();
+    const [eventName, setEventName] = useState("");
+    const [eventDescription, setEventDescription] = useState("");
+    const [start, setStart] = useState(new Date());
+    const [end, setEnd] = useState(new Date());
+
+
     const fetchRemote = async (query: ViewEvent): Promise<ProcessedEvent[]> => {
-        console.log({ query });
-        /**Simulate fetchin remote data */
-        return new Promise((res) => {
-            setTimeout(() => {
-                res(EVENTS);
-            }, 3000);
-        });
+        const { data: events, error } = await supabase
+            .from("events")
+            .select()
+            .gte("end", query.start)
+            .lte("start", query.end);
+
+        if (error) {
+            console.error(error);
+            return [];
+        }
+
+        return events.map((event) => ({
+            event_id: event.id,
+            title: event.title,
+            start: new Date(event.start),
+            end: new Date(event.end),
+            description: event.description,
+        }));
     };
 
     const handleConfirm = async (
         event: ProcessedEvent,
         action: EventActions
     ): Promise<ProcessedEvent> => {
-        console.log("handleConfirm =", action, event.title);
+        if (action === "edit") {
+            const { data, error } = await supabase
+                .from("events")
+                .update({
+                    title: event.title,
+                    description: event.description,
+                    start: event.start.toISOString(),
+                    end: event.end.toISOString(),
+                })
+                .eq("id", event.event_id)
+                .single();
 
-        /**
-     * Make sure to return 4 mandatory fields:
-     * event_id: string|number
-     * title: string
-     * start: Date|string
-     * end: Date|string
-     * ....extra other fields depend on your custom fields/editor properties
-     */
-        // Simulate http request: return added/edited event
-        return new Promise((res, rej) => {
-            if (action === "edit") {
-                /** PUT event to remote DB */
-            } else if (action === "create") {
-                /**POST event to remote DB */
+            if (error) {
+                console.error(error);
+                return event;
             }
 
-            const isFail = Math.random() > 0.6;
-            // Make it slow just for testing
-            setTimeout(() => {
-                if (isFail) {
-                    rej("Ops... Faild");
-                } else {
-                    res({
-                        ...event,
-                        event_id: event.event_id || Math.random()
-                    });
-                }
-            }, 3000);
-        });
+            return {
+                ...event,
+                title: data.title,
+                description: data.description,
+                start: new Date(data.start),
+                end: new Date(data.end),
+            };
+        } if (action === "create") {
+            const { data, error } = await supabase.from("events").insert({
+                title: event.title,
+                description: event.description,
+                start: event.start.toISOString(),
+                end: event.end.toISOString(),
+            });
+
+            if (error) {
+                console.error(error);
+                return event;
+            }
+
+            return {
+                ...event,
+                event_id: data[0].id,
+                title: data[0].title,
+                description: data[0].description,
+                start: new Date(data[0].start),
+                end: new Date(data[0].end),
+            };
+        }
+
+        return event;
     };
 
     const handleDelete = async (deletedId: string): Promise<string> => {
-        // Simulate http request: return the deleted id
-        return new Promise((res, rej) => {
-            setTimeout(() => {
-                res(deletedId);
-            }, 3000);
-        });
+        const { error } = await supabase
+            .from("events")
+            .delete()
+            .eq("id", deletedId);
+
+        if (error) {
+            console.error(error);
+            return deletedId;
+        }
+
+        return "";
     };
 
     return (
-        <>
-            <Container>
-                <Typography variant="h4" sx={{ mb: 5 }}>
-                    Calendar
-                </Typography>
-
-                <Card mb={5} >
-                    <Scheduler
-                        getRemoteEvents={fetchRemote}
-                        onConfirm={handleConfirm}
-                        onDelete={handleDelete}
-                    />
-                </Card>
-            </Container>
-        </>
+        <Scheduler
+            getRemoteEvents={fetchRemote}
+            onConfirm={handleConfirm}
+            onDelete={handleDelete}
+        />
     );
 }

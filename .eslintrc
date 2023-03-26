@@ -24,18 +24,6 @@
       "impliedStrict": true
     }
   },
-  "spaced-comment": [
-    2,
-    "always",
-    {
-      "exceptions": [
-        "/-"
-      ],
-      "markers": [
-        "/"
-      ]
-    }
-  ],
   "rules": {
     "no-new": 0,
     "no-alert": 0,

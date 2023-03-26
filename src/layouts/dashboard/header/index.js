@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+
+import { useSession, useSupabaseClient, useSessionContext } from '@supabase/auth-helpers-react';
+
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Stack, AppBar, Toolbar, IconButton } from '@mui/material';
+import { Box, Stack, AppBar, Toolbar, IconButton, Button } from '@mui/material';
 // utils
 import { bgBlur } from '../../../utils/cssStyles';
 // components
@@ -37,8 +41,16 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 Header.propTypes = {
     onOpenNav: PropTypes.func,
 };
-
 export default function Header({ onOpenNav }) {
+    const session = useSession();
+    const supabase = useSupabaseClient();
+    const navigate = useNavigate();
+
+    async function signOut() {
+        await supabase.auth.signOut();
+        navigate('/login');
+    }
+
     return (
         <StyledRoot>
             <StyledToolbar>
@@ -62,8 +74,9 @@ export default function Header({ onOpenNav }) {
                         xs: 0.5,
                         sm: 1,
                     }}
-                />
-
+                >
+                    <Button onClick={signOut}>Sign Out</Button>
+                </Stack>
             </StyledToolbar>
         </StyledRoot>
     );

@@ -1,4 +1,6 @@
-import { Navigate, useRoutes } from 'react-router-dom';
+import { Navigate, useRoutes, Route } from 'react-router-dom';
+import { useSession, useSupabaseClient, useSessionContext } from '@supabase/auth-helpers-react';
+
 // layouts
 import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
@@ -9,22 +11,25 @@ import Page404 from './pages/Page404';
 import DashboardAppPage from './pages/DashboardAppPage';
 import Calendar from './pages/CalendarPage';
 import CalNowPage from './pages/CallNowPage';
+import CallFirst from './components/call/first';
 
 // ----------------------------------------------------------------------
 
+const session = { useSession }
+
 export default function Router() {
+  const { isLoading } = useSessionContext();
+  const session = { useSession }
   const routes = useRoutes([
     {
       path: '/',
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'contacts', element: <UserPage /> },
         { path: 'calendar', element: <Calendar /> },
         { path: 'call', element: <CalNowPage /> },
-
-
+        { path: 'callf', element: <CallFirst /> }
       ],
     },
     {
@@ -44,6 +49,8 @@ export default function Router() {
       element: <Navigate to="/404" replace />,
     },
   ]);
+  if (session) {
+    return routes;
+  }
 
-  return routes;
 }
